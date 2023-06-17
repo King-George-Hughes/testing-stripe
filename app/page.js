@@ -4,8 +4,6 @@ import { checkout } from "@/checkout";
 import Image from "next/image";
 
 export default function Home() {
-  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
   return (
     <main className="w-full h-full">
       <h1 className="text-4xl font-bold text-center mt-20">By My Staffs</h1>
@@ -20,7 +18,7 @@ export default function Home() {
               checkout({
                 lineItems: [
                   {
-                    price: "price_1NK3utKS72YCaCwXxFIZpkBR",
+                    price: "price_1NK3tiKS72YCaCwXuigznphs",
                     quantity: 1,
                   },
                 ],
@@ -35,7 +33,16 @@ export default function Home() {
           <p>Very Expensive Art work 2</p>
           <button
             className="px-5 bg-green-600 text-white rounded-sm mt-3"
-            onClick={() => console.log("Bought")}
+            onClick={() =>
+              checkout({
+                lineItems: [
+                  {
+                    price: "price_1NK3utKS72YCaCwXxFIZpkBR",
+                    quantity: 1,
+                  },
+                ],
+              })
+            }
           >
             Buy
           </button>
